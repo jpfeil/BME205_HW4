@@ -125,7 +125,6 @@ not require large amounts of RAM when you get very long sequences
 16. In the other approach, you can define a generator function in
 Python to read a FASTA file one sequence at a time, then extract the
 kmers from the sequence with something like:
-end code.
     - [X] **DTS** I used this approach and it works well if you prepend
      with `(k-1)*^` and `(k-1)*$`
 ```
@@ -134,4 +133,45 @@ for (fasta_id,comment,seq) in read_fasta(genome):
         counts[seq[start:start+k]] += 1
 ```
 
-17.
+17. count-kmers.py must have this option: "--order(or -o) a required
+argument that gives the order of the model (hence --order=0should
+count 1-mers)"
+
+      - [ ] **DTS** Haven't done this. Use argparse
+
+18. --alphabet(or -a)
+    1. which specifies which letters of the sequence are to be used
+      (for example, to count only standard amino acids, use --
+      alphabetACDEFGHIKLMNPQRSTVWY).
+        - [X] **DTS** haven't done this yet
+    2. "All characters in sequences that are not in the alphabet should be ignored."
+       - [ ] **DTS** need to test this
+    3. "Note: you may want to use the "set" type to represent the alphabet internally."
+       - [ ] **DTS** I have no idea how to implement this.
+       - [ ] **DTS** Doesn't this need to be in count_kmers?
+    4. "The alphabet should default to ASCII letters if not specified."
+       - [X] **DTS** Did this already in parse_arguments with `const=string.ascii_letters`
+    5. "Note: you want case conversion to be done before determining whether a letter is in the alphabet, so that users don't have to provide both lower-case and upper-case copies of the alphabet."
+
+19. "The command-line option parsing should be done with the "argparse" module."
+
+20. "The actual counting of k-mers should be done by a function you
+define in a separate module (Markov.py or markov.py)."
+
+21. "The counts are most easily kept and returned in a
+"collections.Counter" object, which provides a very convenient way to
+do all sorts of counting."
+   - [ ] **DTS** already using collections.Counter
+
+22. "If the k-mer counting function is passed a file-like object (like
+sys.stdin) as an argument, then you can easily reuse it on other files"
+   - [ ] **DTS** Need to do this still
+
+23. "Furthermore, if you use `for line in input_stream:` to read the
+input, then you can do testing by passing in a list of lines"
+```
+>>> dummy_in= '>seq1\nABCDEF\n>seq2\nAC\nde\nFG\n>seq3\n'
+>>> count=get_counts(dummy_in.splitlines(True), 2, alphabet="ABCDEFGHIJK", start='^', stop='$')
+```
+
+24. 
