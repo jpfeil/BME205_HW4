@@ -30,8 +30,13 @@ and mark_f14_2.seqs
 make your own copies.  (Note: the "f14" is correct---I'm reusing the
 files from last year.)"
 
-- [ ] a bigger project
-  - [ ] first subtask #1234
-    - [ ] follow up subtask #4321
-      - [ ] final subtask cc @mention
-- [ ] a separate task
+5. Use "tiny.seqs set for quick testing."
+   - [X] DTS using this currently. Didn't modify at all yet
+
+6. Use the special 'stop' and 'start' characters at the beginning and
+end of a sequence to use in the HMM. "the start of a sequence (^) and
+end of the sequence($)"
+    - [X] DTS solved this using this line:
+    >new_seq='^'*(k-1) +seq.upper() +'$'*(k-1)
+    This allows you to use the kmer-generating for-loop Karplus
+    provides without doing any weird edge cases
