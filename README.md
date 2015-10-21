@@ -95,7 +95,6 @@ by the count of that k-mer.
 13. Initial and final k-mers should be symmetrically included, that
 is, if the sequence is ABDEF and you are counting 3-mers, the counts
 should be:
-
 ```
 ^^A 1
 ^AB 1
@@ -105,7 +104,6 @@ DEF 1
 EF$ 1
 F$$ 1
 ```
-
     - [X] **DTS** This works for me since I fulfilled #6 and #11
       above. Can't find a case where it breaks so far, but I haven't
       done much testing
@@ -121,7 +119,6 @@ character at a time, using something like `kmer = kmer[0:-1]+letter.`"
 *Karplus then writes* "Both approaches are useful. The first one does
 not require large amounts of RAM when you get very long sequences
 (like whole plant chromosomes),"
-
     - [X] **DTS** I had no idea what he was doing here so I didn't use
       this method
 
@@ -133,7 +130,7 @@ for (fasta_id,comment,seq) in read_fasta(genome):
     for start in range(len(seq)-k):
         counts[seq[start:start+k]] += 1
 ```
-    -[X] **DTS** I used this approach and it works well if you prepend
+    - [X] **DTS** I used this approach and it works well if you prepend
      with `(k-1)*^` and `(k-1)*$`
 
 17. 
