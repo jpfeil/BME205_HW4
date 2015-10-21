@@ -95,6 +95,9 @@ by the count of that k-mer.
 13. Initial and final k-mers should be symmetrically included, that
 is, if the sequence is ABDEF and you are counting 3-mers, the counts
 should be:
+    - [X] **DTS** This works for me since I fulfilled #6 and #11
+      above. Can't find a case where it breaks so far, but I haven't
+      done much testing
 ```
 ^^A 1
 ^AB 1
@@ -104,10 +107,6 @@ DEF 1
 EF$ 1
 F$$ 1
 ```
-end code.
-    - [X] **DTS** This works for me since I fulfilled #6 and #11
-      above. Can't find a case where it breaks so far, but I haven't
-      done much testing
 
 14. Note: case should be ignored in the input sequence, so that
 "abDE", "ABDE", and "abde" are all counted as the same 4-mer.
@@ -126,13 +125,13 @@ not require large amounts of RAM when you get very long sequences
 16. In the other approach, you can define a generator function in
 Python to read a FASTA file one sequence at a time, then extract the
 kmers from the sequence with something like:
+end code.
+    - [X] **DTS** I used this approach and it works well if you prepend
+     with `(k-1)*^` and `(k-1)*$`
 ```
 for (fasta_id,comment,seq) in read_fasta(genome):
     for start in range(len(seq)-k):
         counts[seq[start:start+k]] += 1
 ```
-end code.
-    - [X] **DTS** I used this approach and it works well if you prepend
-     with `(k-1)*^` and `(k-1)*$`
 
-17. 
+17.
