@@ -4,22 +4,21 @@ If you don't know how to use markdown, [go to this website:](https://github.com/
 
 [And go here if you don't know how to use git:](http://rogerdudler.github.io/git-guide/)
 
-# Hw4 requirements to get an 'A'
+## Hw4 requirements to get an 'A'
 
 -Things that Karplus wrote in the assignment are in " "
 
 -Things that Darrin wrote are not in " ", but aim to clarify what
  Karplus wrote
 
-## Task list for Assignment 4, based on order of appearance on his site
+### Task list for Assignment 4, based on order of appearance on his site
 - [ ] "You will build stochastic models of these sequences as zero-order
     and first-order Markov chains, and measure the information gain of the
-    first-order model over the zero-order model." ONLY CHECK THIS WHEN
-    100% COMPLETE.
+    first-order model over the zero-order model."
 
 - [X] "so that 'A' and 'a' both stand for alanine." Make the sequences
     all uppercase to avoid this problem.
-    DTS seq.upper() in count_kmers() method
+        - DTS seq.upper() in count_kmers() method
 
 - [ ] "You will do 2-fold cross-validation (training on each of the sets
     and testing on the other)." This is in reference to
