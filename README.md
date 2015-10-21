@@ -136,8 +136,8 @@ for (fasta_id,comment,seq) in read_fasta(genome):
 17. count-kmers.py must have this option: "--order(or -o) a required
 argument that gives the order of the model (hence --order=0should
 count 1-mers)"
-
-      - [ ] **DTS** Haven't done this. Use argparse
+      - [X] **DTS** Completed this, to get aliases for options just do
+        this: `parser.add_argument("--order", "-o")`
 
 18. --alphabet(or -a)
     1. which specifies which letters of the sequence are to be used
