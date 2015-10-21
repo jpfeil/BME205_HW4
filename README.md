@@ -86,6 +86,7 @@ WHEN 100% FINISHED**
 12. The output should have two tokens on each line: the k-mer followed
 by the count of that k-mer.
    - [ ] **DTS** I'm guessing he just wants it `\t` separated again. That was easy.
+   
    ```
    def print_kmers(counter):
     for value in sorted(counter):
@@ -98,15 +99,16 @@ should be:
     - [X] **DTS** This works for me since I fulfilled #6 and #11
       above. Can't find a case where it breaks so far, but I haven't
       done much testing
-```
-^^A 1
-^AB 1
-ABD 1
-BDE 1
-DEF 1
-EF$ 1
-F$$ 1
-```
+
+      ```
+      ^^A 1
+      ^AB 1
+      ABD 1
+      BDE 1
+      DEF 1
+      EF$ 1
+      F$$ 1
+      ```
 
 14. Note: case should be ignored in the input sequence, so that
 "abDE", "ABDE", and "abde" are all counted as the same 4-mer.
@@ -127,11 +129,12 @@ Python to read a FASTA file one sequence at a time, then extract the
 kmers from the sequence with something like:
     - [X] **DTS** I used this approach and it works well if you prepend
      with `(k-1)*^` and `(k-1)*$`
-```
-for (fasta_id,comment,seq) in read_fasta(genome):
-    for start in range(len(seq)-k):
-        counts[seq[start:start+k]] += 1
-```
+     
+     ```
+     for (fasta_id,comment,seq) in read_fasta(genome):
+     for start in range(len(seq)-k):
+     counts[seq[start:start+k]] += 1
+     ```
 
 17. count-kmers.py must have this option: "--order(or -o) a required
 argument that gives the order of the model (hence --order=0should
@@ -169,9 +172,11 @@ sys.stdin) as an argument, then you can easily reuse it on other files"
 
 23. "Furthermore, if you use `for line in input_stream:` to read the
 input, then you can do testing by passing in a list of lines"
-```
->>> dummy_in= '>seq1\nABCDEF\n>seq2\nAC\nde\nFG\n>seq3\n'
->>> count=get_counts(dummy_in.splitlines(True), 2, alphabet="ABCDEFGHIJK", start='^', stop='$')
-```
+
+   ```
+   >>> dummy_in= '>seq1\nABCDEF\n>seq2\nAC\nde\nFG\n>seq3\n'
+   >>> count=get_counts(dummy_in.splitlines(True),
+                        2, alphabet="ABCDEFGHIJK", start='^', stop='$')
+   ```
 
 24. 
