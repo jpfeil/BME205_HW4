@@ -104,6 +104,7 @@ DEF 1
 EF$ 1
 F$$ 1
 ```
+end code.
     - [X] **DTS** This works for me since I fulfilled #6 and #11
       above. Can't find a case where it breaks so far, but I haven't
       done much testing
@@ -130,6 +131,7 @@ for (fasta_id,comment,seq) in read_fasta(genome):
     for start in range(len(seq)-k):
         counts[seq[start:start+k]] += 1
 ```
+end code.
     - [X] **DTS** I used this approach and it works well if you prepend
      with `(k-1)*^` and `(k-1)*$`
 
