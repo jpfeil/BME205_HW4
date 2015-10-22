@@ -164,11 +164,11 @@ define in a separate module (Markov.py or markov.py)."
 21. "The counts are most easily kept and returned in a
 "collections.Counter" object, which provides a very convenient way to
 do all sorts of counting."
-   - [ ] **DTS** already using collections.Counter
+   - [X] **DTS** already using collections.Counter
 
 22. "If the k-mer counting function is passed a file-like object (like
 sys.stdin) as an argument, then you can easily reuse it on other files"
-   - [ ] **DTS** Need to do this still
+   - [X] **DTS** This works currently just by passing the count_kmers() method `sys.stdin`
 
 23. "Furthermore, if you use `for line in input_stream:` to read the
 input, then you can do testing by passing in a list of lines"
@@ -178,5 +178,6 @@ input, then you can do testing by passing in a list of lines"
    >>> count=get_counts(dummy_in.splitlines(True),
                         2, alphabet="ABCDEFGHIJK", start='^', stop='$')
    ```
+   - [X] **DTS** Checked that this works propely!
 
 24. 
